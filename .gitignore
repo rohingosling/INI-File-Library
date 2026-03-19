@@ -9,6 +9,11 @@ BUILD.LOG
 test/OUTPUT.INI
 test/SCRATCH.INI
 
+# Claude / Claude Code artifacts
+CLAUDE.md
+prompt.md
+.claude/
+
 # Editor / IDE files
 *.swp
 *.bak

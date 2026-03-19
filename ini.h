@@ -12,7 +12,7 @@
 //
 // Change Log
 //
-//   Version 1.1 - 1992-05-09
+//   Version 1.1
 //
 //   - New Feature: Load method to parse and load INI files.
 //
@@ -42,9 +42,9 @@
 // Constants
 //----------------------------------------------------------------------------
 
-#define INI_MAX_ENTRIES     32		// Maximum number of key-value entries that can be stored
-#define INI_MAX_STRING_SIZE 128		// Maximum length of a section name, key, or value string
-#define INI_MAX_LINE_SIZE   256		// Maximum length of a single line read from the INI file
+#define INI_MAX_ENTRIES     256 	// Maximum number of key-value entries that can be stored
+#define INI_MAX_STRING_SIZE 80		// Maximum length of a section name, key, or value string
+#define INI_MAX_LINE_SIZE   120		// Maximum length of a single line read from the INI file
 
 //----------------------------------------------------------------------------
 // Class: INI

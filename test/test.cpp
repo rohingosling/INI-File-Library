@@ -225,20 +225,16 @@ int main ()
 	ReportResult ( "Load output.ini returns 0", result == 0 );
 
 	value = ini_verify.GetValue ( "General", "title" );
-	ReportResult ( "General/title preserved",
-		value != NULL && strcmp ( value, "Test Application" ) == 0 );
+	ReportResult ( "General/title preserved", value != NULL && strcmp ( value, "Test Application" ) == 0 );
 
 	value = ini_verify.GetValue ( "General", "author" );
-	ReportResult ( "General/author preserved",
-		value != NULL && strcmp ( value, "Rohin Gosling" ) == 0 );
+	ReportResult ( "General/author preserved", value != NULL && strcmp ( value, "Rohin Gosling" ) == 0 );
 
 	value = ini_verify.GetValue ( "Audio", "volume" );
-	ReportResult ( "Audio/volume = \"50\"",
-		value != NULL && strcmp ( value, "50" ) == 0 );
+	ReportResult ( "Audio/volume = \"50\"",	value != NULL && strcmp ( value, "50" ) == 0 );
 
 	value = ini_verify.GetValue ( "Network", "port" );
-	ReportResult ( "Network/port preserved",
-		value != NULL && strcmp ( value, "8080" ) == 0 );
+	ReportResult ( "Network/port preserved", value != NULL && strcmp ( value, "8080" ) == 0 );
 
 	//--------------------------------------------------------------------
 	// Test 10: Build INI from scratch without loading a file.

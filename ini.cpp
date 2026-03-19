@@ -1,7 +1,7 @@
 //****************************************************************************
 // Program: INI File Library
 // Version: 2.0
-// Date:    2026-03-19
+// Date:    1992-05-09
 // Author:  Rohin Gosling
 //
 // Description
@@ -12,7 +12,7 @@
 //
 // Change Log
 //
-//   Version 1.1 - 1992-05-09
+//   Version 1.1
 //
 //   - New Feature: Load method to parse and load INI files.
 //
@@ -130,6 +130,7 @@ INI::~INI ()
 //
 //   result (int):
 //   - Returns 0 on success or if memory was already allocated.
+//   - Returns -1 if a far-heap allocation fails.
 //
 //----------------------------------------------------------------------------
 
@@ -148,6 +149,13 @@ int INI::AllocateMemory ()
 	key_names     = (char **) farmalloc ( INI_MAX_ENTRIES * sizeof ( char * ) );
 	key_values    = (char **) farmalloc ( INI_MAX_ENTRIES * sizeof ( char * ) );
 
+	// Verify that all top-level pointer arrays were allocated.
+
+	if ( section_names == NULL || key_names == NULL || key_values == NULL )
+	{
+		return -1;
+	}
+
 	// Allocate per-entry string buffers for each of the three parallel arrays.
 
 	for ( long i = 0; i < INI_MAX_ENTRIES; i++ )
@@ -155,6 +163,13 @@ int INI::AllocateMemory ()
 		section_names [ i ] = (char *) farmalloc ( INI_MAX_STRING_SIZE );
 		key_names     [ i ] = (char *) farmalloc ( INI_MAX_STRING_SIZE );
 		key_values    [ i ] = (char *) farmalloc ( INI_MAX_STRING_SIZE );
+
+		// Verify that all per-entry string buffers were allocated.
+
+		if ( section_names [ i ] == NULL || key_names [ i ] == NULL || key_values [ i ] == NULL )
+		{
+			return -1;
+		}
 	}
 
 	// Reset entry count.
@@ -319,7 +334,10 @@ int INI::Load ( const char *file_name )
 
 	// Allocate memory for entries if not already allocated.
 
-	AllocateMemory ();
+	if ( AllocateMemory () != 0 )
+	{
+		return -1;
+	}
 
 	// Reset entry count and clear the current section name.
 
@@ -491,7 +509,10 @@ int INI::AddSection ( const char *section )
 {
 	// Ensure memory is allocated.
 
-	AllocateMemory ();
+	if ( AllocateMemory () != 0 )
+	{
+		return -1;
+	}
 
 	// Check if the section already exists in any entry.
 
@@ -547,7 +568,10 @@ int INI::SetValue ( const char *section, const char *key, const char *value )
 {
 	// Ensure memory is allocated.
 
-	AllocateMemory ();
+	if ( AllocateMemory () != 0 )
+	{
+		return -1;
+	}
 
 	// Search for an existing entry with the matching section and key.
 
