@@ -1,0 +1,16 @@
+# Build artifacts
+*.OBJ
+*.EXE
+*.obj
+*.exe
+BUILD.LOG
+
+# Test output
+test/OUTPUT.INI
+test/SCRATCH.INI
+
+# Editor / IDE files
+*.swp
+*.bak
+*.DSK
+*.PRJ
