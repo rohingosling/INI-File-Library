@@ -1,5 +1,8 @@
 # INI File Library
 
+![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white)
+![DOS](https://img.shields.io/badge/DOS-000000?style=flat&logo=windows&logoColor=white)
+
 A lightweight C++ library for reading, writing, and manipulating standard Windows-style INI files. Originally written in 1992 for DOS real-mode programs compiled with Borland Turbo C++.
 
 ## Features
